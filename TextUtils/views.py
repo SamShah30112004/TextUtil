@@ -12,6 +12,7 @@ def analyze(request):
     NewLine = request.POST.get('RemoveNewLine', 'off')
     char = request.POST.get('CountChar', 'off')
     extraSpaces = request.POST.get('RemoveSpace', 'off')
+    wordcount = request.POST.get('CountWords', 'off')
     punctuation = string.punctuation
     
     if(Check == 'on' and Caps == 'on' and NewLine == 'on'):
@@ -77,7 +78,16 @@ def analyze(request):
             if not(Input[index] == " " and Input[index+1]==" "):
                 analyzed = analyzed + char
                 
-        params = {'purpose': 'After Counting Charecters No. of characters: ', 'analyzed_text': analyzed}
+        params = {'purpose': 'After Removing extra spaces: ', 'analyzed_text': analyzed}
+
+    elif wordcount == 'on' and (len(Input) > 0):
+        Input = Input + " "
+        analyzed = 0
+        for char in Input:
+            if char == " ":
+                analyzed = analyzed + 1
+                
+        params = {'purpose': 'After Counting words No. of words: ', 'analyzed_text': analyzed}
     
     else:
         return HttpResponse("Error")

@@ -1,0 +1,3 @@
+*.sqlite3
+TextUtils/__pycache__/
+       

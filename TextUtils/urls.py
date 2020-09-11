@@ -25,4 +25,5 @@ urlpatterns = [
     path('RemoveNewLine', views.analyze, name='NewLine'),
     path('CountChar', views.analyze, name='CharCount'),
     path('RemoveSpace', views.analyze, name='RemoveSpace'),
+    path('CountWords', views.analyze, name='Count Words'),
 ]
